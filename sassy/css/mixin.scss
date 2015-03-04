@@ -1,0 +1,86 @@
+$defaultcolor: #333;
+$colorone: #fff;
+$colortwo: #0099cc;
+$colorthree: #000;
+
+@mixin border-radius($radius: 25px) {
+	border-radius: $radius;
+}
+
+@mixin topbottom($height: 100px, $width: 100%, $background:(darken($colorone, 100))) {
+	height: $height;
+	width: $width;
+	background-color: $background;
+}
+
+@mixin indent($top: 10px, $right:50px, $bottom: 0px, $left: 50px) {
+	margin:$top $right $bottom $left;
+}
+
+@mixin display($disp:block) {
+	display: $disp;
+
+	@if $disp == "inline" {
+		margin-left: 20px;
+	}
+
+	@else {
+		text-align: center;
+	}
+}
+
+/*********************************************************/
+
+a {
+	text-decoration: none;
+	color: $colorone;
+}
+
+a:hover, a:focus {
+	color:darken($colorone, 50);
+}
+
+body {
+	background-color: $defaultcolor;
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+
+}
+
+.container {
+	margin:10px;
+	width:100%;
+	height:100%;
+}
+
+h1 {
+	color: $colorone;
+	display: inline;
+}
+
+h3 {
+	color: $colortwo;
+	@include display(inline);
+}
+
+header {
+	@include topbottom;
+}
+
+footer {
+	@include topbottom;
+}
+
+p {
+	color: darken($colorone, 25);
+	@include indent(20px, 50px, 10px);
+}
+
+article {
+	@include border-radius(30px);
+	margin: 20px 0 20px 0;
+	border: 2px solid $colorthree;
+	position: relative;
+	left: 10%;
+	width: 70%;
+}
